@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"     
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:aop="http://www.springframework.org/schema/aop"   
+    xmlns:tx="http://www.springframework.org/schema/tx"  
+    xmlns:context="http://www.springframework.org/schema/context"       
+      
+    xsi:schemaLocation="http://www.springframework.org/schema/beans   
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+           http://www.springframework.org/schema/aop   
+           http://www.springframework.org/schema/aop/spring-aop-3.0.xsd  
+           http://www.springframework.org/schema/tx   
+           http://www.springframework.org/schema/tx/spring-tx-3.0.xsd  
+           http://www.springframework.org/schema/context  
+           http://www.springframework.org/schema/context/spring-context-3.0.xsd  
+           ">  
+    
+    <!-- 配置配置的bean所在包的位置 -->  
+	<context:component-scan base-package="com"/>
+	<!-- 当前Spring支持注解 -->
+	<context:annotation-config/> 
+  
+    <!-- 1，配置数据源 -->  
+   <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+		<property name="url" value="jdbc:mysql://localhost:3306/we"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="root"></property>
+		<property name="maxActive" value="100"></property>
+		<property name="maxIdle" value="30"></property>
+		<property name="maxWait" value="500"></property>
+		<property name="defaultAutoCommit" value="true"></property>
+	</bean> 
+  
+  
+    <!-- 2，配置SessionFactory（整合Hibernate） -->  
+   <!--  <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">  
+        <property name="dataSource" ref="dataSource"></property>  
+        <property name="configLocation" value="hibernate.cfg.xml"></property>  
+    </bean>   -->
+  
+  	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>com/we/code/model/WePlate.hbm.xml</value>
+				<value>com/we/code/model/WePost.hbm.xml</value>
+			</list>
+		</property>
+	</bean> 
+	<!-- 设定transactionManager -->    
+    <bean id="txManager"    
+       class="org.springframework.orm.hibernate3.HibernateTransactionManager">    
+       <property name="sessionFactory" ref="sessionFactory" />    
+    </bean>    
+   
+   <!--启动spring事务注解功能-->    
+   <tx:annotation-driven transaction-manager="txManager"/> 
+   
+   <!--Mybatis配置-->  
+   <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">  
+		<property name="dataSource" ref="dataSource" />  
+		<property name="configLocation">  <!-- name 为configLocation或s  不可为其他 -->    
+            <value>confi/MyBatis-Config.xml</value> <!-- 不区分大小写，路径前可加'/' -->    
+        </property>  
+	</bean>
+	
+	<!-- <bean id="test" class="org.mybatis.spring.mapper.MapperFactoryBean">  
+	    <property name="mapperInterface" value="com.we.code.dao.api.Test"></property>  
+	    <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>  
+	</bean> -->
+	
+	<!-- 采用自动扫描方式创建mapper bean(批量更新模式) -->  
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer" autowire="byName">  
+	    <property name="basePackage"  value="com.we.code.dao.api" />  
+	    <property name="sqlSessionFactory"  value="sqlSessionFactory" />  
+	    <!-- <property name="markerInterface" value="com.we.code.dao.api.MyBatisBatchDao" />   -->
+	</bean>  
+    
+</beans>

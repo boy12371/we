@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-3-28 9:03:17 by Hibernate Tools 4.0.0.Final -->
+<hibernate-mapping>
+    <class name="com.we.code.model.WePlate" table="we_plate" catalog="we">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="plateid" type="java.lang.Integer">
+            <column name="PLATEID" not-null="true" />
+        </property>
+        <property name="title" type="string">
+            <column name="TITLE" length="100" not-null="true" />
+        </property>
+        <property name="info" type="string">
+            <column name="INFO" length="1000" not-null="true" />
+        </property>
+        <property name="type" type="string">
+            <column name="TYPE" length="50" not-null="true" />
+        </property>
+        <property name="url" type="string">
+            <column name="URL" length="1000" not-null="true" />
+        </property>
+        <property name="faplateid" type="int">
+            <column name="FAPLATEID" not-null="true" />
+        </property>
+        <property name="insertime" type="timestamp">
+            <column name="INSERTIME" length="19" not-null="true" />
+        </property>
+        <property name="updatetime" type="timestamp">
+            <column name="UPDATETIME" length="19" not-null="true" />
+        </property>
+        <property name="status" type="int">
+            <column name="STATUS" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

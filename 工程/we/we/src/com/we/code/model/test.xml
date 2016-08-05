@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="com.we.code.dao.api.Test">    
+	<delete id="deleteUser" parameterType="int">  
+		DELETE FROM user WHERE id=#{id}
+	</delete>
+	<select id="getUser" parameterType="com.we.code.model.WePlate" resultType="com.we.code.model.WePlate">  
+   		 SELECT * FROM we_plate WHERE id=#{id}  
+	</select>  
+</mapper>

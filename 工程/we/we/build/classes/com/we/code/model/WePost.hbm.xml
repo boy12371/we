@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-3-28 9:03:17 by Hibernate Tools 4.0.0.Final -->
+<hibernate-mapping>
+    <class name="com.we.code.model.WePost" table="we_post" catalog="we">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="title" type="string">
+            <column name="TITLE" length="1000" not-null="true" />
+        </property>
+        <property name="summary" type="string">
+            <column name="SUMMARY" length="2000" />
+        </property>
+        <property name="type" type="string">
+            <column name="TYPE" length="50" not-null="true" />
+        </property>
+        <property name="reading" type="int">
+            <column name="READING" not-null="true" />
+        </property>
+        <property name="praise" type="int">
+            <column name="PRAISE" not-null="true" />
+        </property>
+        <property name="collection" type="int">
+            <column name="COLLECTION" not-null="true" />
+        </property>
+        <property name="status" type="int">
+            <column name="STATUS" not-null="true" />
+        </property>
+        <property name="link" type="string">
+            <column name="LINK" length="1000" />
+        </property>
+        <property name="userid" type="java.lang.Integer">
+            <column name="USERID" />
+        </property>
+        <property name="createtime" type="timestamp">
+            <column name="CREATETIME" length="19" not-null="true" />
+        </property>
+        <property name="plateid" type="java.lang.Integer">
+            <column name="PLATEID" />
+        </property>
+    </class>
+</hibernate-mapping>

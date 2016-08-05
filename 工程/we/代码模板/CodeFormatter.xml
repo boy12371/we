@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><templates><template autoinsert="true" context="classbody_context" deleted="false" description="新类类型主体中的代码" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.classbody" name="classbody">
+</template><template autoinsert="true" context="setterbody_context" deleted="false" description="创建的 setter 中的代码" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.setterbody" name="setterbody">${field} = ${param};</template><template autoinsert="true" context="getterbody_context" deleted="false" description="创建的 getter 中的代码" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.getterbody" name="getterbody">return ${field};</template><template autoinsert="true" context="interfacebody_context" deleted="false" description="新接口类型主体中的代码" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.interfacebody" name="interfacebody">
+</template><template autoinsert="true" context="annotationbody_context" deleted="false" description="新注释类型主体中的代码" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.annotationbody" name="annotationbody">
+</template><template autoinsert="true" context="catchblock_context" deleted="false" description="新 catch 块中的代码" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.catchblock" name="catchblock">// ${todo} 自动生成的 catch 块
+${exception_var}.printStackTrace();</template><template autoinsert="true" context="enumbody_context" deleted="false" description="新枚举类型主体中的代码" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.enumbody" name="enumbody">
+</template><template autoinsert="true" context="constructorbody_context" deleted="false" description="创建的构造函数存根中的代码" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.constructorbody" name="constructorbody">${body_statement}
+// ${todo} 自动生成的构造函数存根</template><template autoinsert="true" context="newtype_context" deleted="false" description="新创建的文件" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.newtype" name="newtype">${filecomment}
+${package_declaration}
+
+${typecomment}
+${type_declaration}</template><template autoinsert="true" context="methodbody_context" deleted="false" description="创建的方法存根中的代码" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.methodbody" name="methodbody">// ${todo} 自动生成的方法存根
+${body_statement}</template></templates>
